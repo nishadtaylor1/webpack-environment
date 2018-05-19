@@ -36,6 +36,14 @@ module.exports = {
         ],
         exclude: /node_modules/
       },
+	{
+	  test: /\.vue$/,
+	  use: [
+		{
+			loader: "vue-loader"
+		}
+	  ]	
+	},
       {
         test: /\.css$/,
         use: [
@@ -72,10 +80,18 @@ module.exports = {
       }
     ]
   },
+  
   plugins: [
+
     new webpack.HotModuleReplacementPlugin(),
     new HTMLwebpackPlugin({
       template: "./src/index.html"
     })
-  ]
+  ],
+	resolve: {
+		alias: {	
+		'vue$': 'vue/dist/vue.js'
+		}
+	}
+
 }
